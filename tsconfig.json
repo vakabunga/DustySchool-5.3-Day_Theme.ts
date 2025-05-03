@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"allowJs": true,
+		"strict": true,
+		"outDir": "./dist",
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"lib": ["es2015", "dom"],
+
+		// единственное отличие от конфига из видео - 
+		// я хочу чтобы мы держали исходники в папке src, как всегда
+		"rootDir": "./src"
+	}
+}

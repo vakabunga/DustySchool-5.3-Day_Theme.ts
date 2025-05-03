@@ -1,0 +1,25 @@
+{
+  "name": "dustyschool-5.3-day_theme.ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && mkdir dist && cp ./src/index.html ./dist && cp ./src/style.css ./dist && tsc",
+    "start": "npx http-server ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vakabunga/DustySchool-5.3-Day_Theme.ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vakabunga/DustySchool-5.3-Day_Theme.ts/issues"
+  },
+  "homepage": "https://github.com/vakabunga/DustySchool-5.3-Day_Theme.ts#readme",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
