@@ -18,22 +18,18 @@ type ImageSourceData = {
 
 if (prevDate === currentDate && localStorage.bgUrl) {
     const currentImageBackgroundUrl: string = localStorage.bgUrl;
-
     preloadContent(currentImageBackgroundUrl);
 } else {
     getWordOfTheDay()
-        .then((response) => response.json())
         .then((data) => {
             return getPhotoByTheWord(data.word);
         })
-        .then((response) => response.json())
         .then((data: ImageSource) => {
             if (data.total > 0) {
                 localStorage.setItem('bgUrl', data.results[0].urls.full);
                 preloadContent(data.results[0].urls.full);
             } else {
                 getRandomPhoto()
-                    .then((response) => response?.json())
                     .then((data: ImageSourceData) => {
                         localStorage.setItem('bgUrl', data.urls.full);
                         preloadContent(data.urls.full);
@@ -43,15 +39,18 @@ if (prevDate === currentDate && localStorage.bgUrl) {
 }
 
 function getWordOfTheDay() {
-    return fetch(`https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=${API_KEY_WORDNIK}`);
+    return fetch(`https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=${API_KEY_WORDNIK}`)
+        .then((response) => response.json());
 }
 
 function getPhotoByTheWord(word: string) {
-    return fetch(`https://api.unsplash.com/search/photos?client_id=${API_KEY_UNSPLASH}&query=${word}`);
+    return fetch(`https://api.unsplash.com/search/photos?client_id=${API_KEY_UNSPLASH}&query=${word}`)
+        .then((response) => response.json());
 }
 
 function getRandomPhoto() {
-    return fetch(`https://api.unsplash.com/photos/random?client_id=${API_KEY_UNSPLASH}`);
+    return fetch(`https://api.unsplash.com/photos/random?client_id=${API_KEY_UNSPLASH}`)
+        .then((response) => response.json());
 }
 
 function preloadContent(url: string) {
